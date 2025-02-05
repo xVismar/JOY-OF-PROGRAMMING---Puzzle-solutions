@@ -1,0 +1,2 @@
+# This level is a tutorial introduction of interacting with enviroment within the game, there is no coding here.
+# В данном уровне нас знакомят с принципами взаимодействия с объектами в игре. Написания кода отключено.
