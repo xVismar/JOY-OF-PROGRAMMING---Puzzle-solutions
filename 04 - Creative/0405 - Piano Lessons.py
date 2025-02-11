@@ -1,0 +1,103 @@
+from pyjop import *
+
+SimEnv.connect()
+
+env = SimEnvManager.first()
+env.reset()
+data = DataExchange.first().get_data("MidiNotes")
+piano = Piano.first()
+
+note_mapping = {
+    24: MusicNotes.C1,
+    25: MusicNotes.Cs1,
+    26: MusicNotes.D1,
+    27: MusicNotes.Ds1,
+    28: MusicNotes.E1,
+    29: MusicNotes.F1,
+    30: MusicNotes.Fs1,
+    31: MusicNotes.G1,
+    32: MusicNotes.Gs1,
+    33: MusicNotes.A1,
+    34: MusicNotes.As1,
+    35: MusicNotes.B1,
+    36: MusicNotes.C2,
+    37: MusicNotes.Cs2,
+    38: MusicNotes.D2,
+    39: MusicNotes.Ds2,
+    40: MusicNotes.E2,
+    41: MusicNotes.F2,
+    42: MusicNotes.Fs2,
+    43: MusicNotes.G2,
+    44: MusicNotes.Gs2,
+    45: MusicNotes.A2,
+    46: MusicNotes.As2,
+    47: MusicNotes.B2,
+    48: MusicNotes.C3,
+    49: MusicNotes.Cs3,
+    50: MusicNotes.D3,
+    51: MusicNotes.Ds3,
+    52: MusicNotes.E3,
+    53: MusicNotes.F3,
+    54: MusicNotes.Fs3,
+    55: MusicNotes.G3,
+    56: MusicNotes.Gs3,
+    57: MusicNotes.A3,
+    58: MusicNotes.As3,
+    59: MusicNotes.B3,
+    60: MusicNotes.C4,
+    61: MusicNotes.Cs4,
+    62: MusicNotes.D4,
+    63: MusicNotes.Ds4,
+    64: MusicNotes.E4,
+    65: MusicNotes.F4,
+    66: MusicNotes.Fs4,
+    67: MusicNotes.G4,
+    68: MusicNotes.Gs4,
+    69: MusicNotes.A4,
+    70: MusicNotes.As4,
+    71: MusicNotes.B4,
+    72: MusicNotes.C5,
+    73: MusicNotes.Cs5,
+    74: MusicNotes.D5,
+    75: MusicNotes.Ds5,
+    76: MusicNotes.E5,
+    77: MusicNotes.F5,
+    78: MusicNotes.Fs5,
+    79: MusicNotes.G5,
+    80: MusicNotes.Gs5,
+    81: MusicNotes.A5,
+    82: MusicNotes.As5,
+    83: MusicNotes.B5,
+    84: MusicNotes.C6,
+    85: MusicNotes.Cs6,
+    86: MusicNotes.D6,
+    87: MusicNotes.Ds6,
+    88: MusicNotes.E6,
+    89: MusicNotes.F6,
+    90: MusicNotes.Fs6,
+    91: MusicNotes.G6,
+    92: MusicNotes.Gs6,
+    93: MusicNotes.A6,
+    94: MusicNotes.As6,
+    95: MusicNotes.B6,
+    96: MusicNotes.C7,
+    97: MusicNotes.Cs7,
+    98: MusicNotes.D7,
+    99: MusicNotes.Ds7,
+    100: MusicNotes.E7,
+    101: MusicNotes.F7,
+    102: MusicNotes.Fs7,
+    103: MusicNotes.G7,
+    104: MusicNotes.Gs7,
+    105: MusicNotes.A7,
+    106: MusicNotes.As7,
+    107: MusicNotes.B7,
+}
+
+while SimEnv.run_main():
+    for note_number in data:
+        note = note_mapping.get(note_number)
+        piano.play_note(note)
+        sleep(0.05)
+
+SimEnv.disconnect()
